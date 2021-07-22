@@ -8,7 +8,6 @@
       <router-link to="/login">Login</router-link> |
       <router-link to="/logout">Logout</router-link> |
       <router-link to="/posts">Posts</router-link> |
-      <router-link to="/new-post">New Post</router-link>
     </div>
     <router-view/>
   </div>

@@ -1,7 +1,6 @@
 <template>
-  <div class="home">
-    <h1>{{ message }}</h1>
-    <h2 v-for="post in posts">
+  <div class="show">
+    <h2>
       <p>{{ post.id }}</p>
       <p>{{ post.title }}</p>
       <p>{{ post.body }}</p>
@@ -19,18 +18,17 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      message: "Welcome to Vue.js!",
-      posts: [],
+      post: {},
     };
   },
   created: function () {
-    this.postIndex();
+    this.postShow();
   },
   methods: {
-    postIndex: function () {
-      axios.get("/posts").then((response) => {
+    postShow: function () {
+      axios.get(`/posts/${this.$route.params.id}`).then((response) => {
         console.log(response.data);
-        this.posts = response.data;
+        this.post = response.data;
       });
     },
   },
