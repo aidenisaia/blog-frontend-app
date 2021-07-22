@@ -43,12 +43,12 @@ const routes = [
     component: Posts
   },
   {
-    path: '/new-post',
+    path: '/posts/new',
     name: 'NewPost',
     component: NewPost
   },
   {
-    path: '/show-post/:id',
+    path: '/posts/:id',
     name: 'ShowPost',
     component: ShowPost
   },

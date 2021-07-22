@@ -1,11 +1,10 @@
 <template>
   <div class="home">
-    <h1>{{ message }}</h1>
     <h2 v-for="post in posts">
       <p>{{ post.id }}</p>
-      <p>{{ post.title }}</p>
-      <p>{{ post.body }}</p>
-      <p>{{ post.image }}</p>
+      <router-link v-bind:to="`/posts/${post.id}`">
+        <p>{{ post.title }}</p>
+      </router-link>
       <hr>
     </h2>
   </div>
@@ -19,7 +18,6 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      message: "Welcome to Vue.js!",
       posts: [],
     };
   },
