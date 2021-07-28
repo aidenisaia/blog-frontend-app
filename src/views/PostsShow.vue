@@ -7,6 +7,10 @@
       <p>{{ post.image }}</p>
       <hr>
     </h2>
+    <router-link v-bind:to="`/posts/${post.id}/edit`">Edit</router-link>
+    <br/>
+    <br/>
+    <button v-on:click="postDelete()">Delete</button>
   </div>
 </template>
 
@@ -29,6 +33,12 @@ export default {
       axios.get(`/posts/${this.$route.params.id}`).then((response) => {
         console.log(response.data);
         this.post = response.data;
+      });
+    },
+    postDelete: function () {
+      axios.delete(`/posts/${this.$route.params.id}`).then((response) => {
+        console.log(response.data);
+        this.$router.push("/posts/");
       });
     },
   },
