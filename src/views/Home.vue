@@ -11,7 +11,8 @@
       <button v-on:click="createPost()">Create</button>
     </div>
     <h1>All posts</h1>
-    <div v-for="post in posts" v-bind:key="post.id">
+    <p>Search: <input v-model="searchTerm"></p>
+    <div v-for="post in filterBy(posts, searchTerm, 'title')" v-bind:key="post.id">
       <h2>
         {{ post.title }}
         <button v-on:click="showPost(post)">more info</button>
@@ -39,7 +40,10 @@
 
 <script>
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
+
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function () {
     return {
       posts: [],
@@ -47,6 +51,7 @@ export default {
       newPostImage: "",
       newPostBody: "",
       currentPost: {},
+      searchTerm: "",
     };
   },
   created: function () {

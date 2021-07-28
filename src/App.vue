@@ -52,11 +52,14 @@ body {
 export default {
   methods: {
     isLoggedIn: function () {
-      if (localStorage.getItem("jxt")) {
+      if (localStorage.getItem("jwt")) {
         return true;
       } else {
         return false;
       }
+    },
+    userId: function () {
+      return localStorage.getItem("user_id");
     },
   },
 };

@@ -7,7 +7,9 @@
       <p>{{ post.image }}</p>
       <hr>
     </h2>
-    <router-link v-bind:to="`/posts/${post.id}/edit`">Edit</router-link>
+    <p>{{ post.user_id }} </p>
+    <p>{{ $parent.userId() }} </p>
+    <router-link v-if="post.user_id == $parent.userId()" v-bind:to="`/posts/${post.id}/edit`">Edit</router-link>
     <br/>
     <br/>
     <button v-on:click="postDelete()">Delete</button>
