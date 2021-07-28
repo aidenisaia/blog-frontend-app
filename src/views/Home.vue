@@ -12,24 +12,26 @@
     </div>
     <h1>All posts</h1>
     <p>Search: <input v-model="searchTerm"></p>
-    <div v-for="post in filterBy(posts, searchTerm, 'title')" v-bind:key="post.id">
-      <h2>
-        {{ post.title }}
-        <button v-on:click="showPost(post)">more info</button>
-      </h2>
-      <div v-if="post === currentPost">
-        <img v-bind:src="post.image" alt="" />
-        <p>{{ post.body }}</p>
-        <div>
-          <h4>Edit post</h4>
-          Title:
-          <input type="text" v-model="post.title" />
-          Image:
-          <input type="text" v-model="post.image" />
-          Body:
-          <input type="text" v-model="post.body" />
-          <button v-on:click="updatePost(post)">Update</button>
-          <button v-on:click="destroyPost(post)">Destroy</button>
+    <div is="transition-group" appear enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+      <div v-for="post in filterBy(posts, searchTerm, 'title')" v-bind:key="post.id">
+        <h2>
+          {{ post.title }}
+          <button v-on:click="showPost(post)">more info</button>
+        </h2>
+        <div v-if="post === currentPost">
+          <img v-bind:src="post.image" alt="" />
+          <p>{{ post.body }}</p>
+          <div>
+            <h4>Edit post</h4>
+            Title:
+            <input type="text" v-model="post.title" />
+            Image:
+            <input type="text" v-model="post.image" />
+            Body:
+            <input type="text" v-model="post.body" />
+            <button v-on:click="updatePost(post)">Update</button>
+            <button v-on:click="destroyPost(post)">Destroy</button>
+          </div>
         </div>
       </div>
     </div>
